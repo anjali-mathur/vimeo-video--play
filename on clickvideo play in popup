@@ -1,0 +1,66 @@
+ <script defer="defer" src="{{ 'froogaloop2.min.js' | asset_url }}"></script>
+ 
+                   {%if section.settings.video_id != blank%}
+                  <div class="window_content">	
+                    <div class="center_item">
+                       <img class=" " src="https://cdn.shopify.com/s/files/1/0277/1025/9297/t/1/assets/play_btn2.png?v=1577766658">
+                    </div>
+                    <iframe class="hide" src="https://player.vimeo.com/video/{{ section.settings.video_id }}" width="640" height="360" frameborder=“0” allowfullscreen allow=autoplay></iframe>
+                  </div>
+                   {% endif %}
+                   
+                   <div id="myModal" class="modal" style="display:none;">
+  <div class="js-modal-content modal-content">
+    <span class="close">X</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+ 
+ ///////////////////  Model Pop up /////////////////
+ $(document).ready(function(){
+  $(document).on('click', '.close' , function(){
+    $('.js-modal-content').html('');
+    $("#myModal").css("display", "none");    
+  });
+
+  $(document).on('click', '.window_content' , function(){
+	var ifra = $(this).find('iframe').attr('src').split('?')[0];
+   
+    modal.style.display = "flex"; 
+    $('.js-modal-content').html('<div class="responsive-video-popup"> <iframe src="'+ifra+'?autoplay=1&amp;title=0&amp;byline=0&amp;color=ffffff&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" > </iframe> </div> <span id="close1" class="close"> <i class="fal fa-times"></i> </span>');
+	$(".close").css("display", "block");
+  });
+  
+
+//var myFrame = $(this).closest("div.navbar_top").next('div.window_content').children('iframe').attr("iframe-popup");
+  // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+if( btn != null ){
+     btn.onclick = function() {
+       modal.style.display = "block";
+     }
+   }
+
+// When the user clicks on <span> (x), close the modal
+   if( span != null ){
+     span.onclick = function() {
+       modal.style.display = "none";
+     }
+   }
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+  
+});
