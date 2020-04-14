@@ -1,0 +1,22 @@
+                     <script defer="defer" src="{{ 'froogaloop2.min.js' | asset_url }}"></script>
+
+                {% if block.settings.vimeo_video != blank %}
+          <div class="rounded-boxdd">
+            <div class="img-box">
+              <div class="v-center" id="playvideoicon-{{forloop.index}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="142.636" height="142.636" viewBox="0 0 142.636 142.636"><defs><style>.a{fill:#287880;opacity:0.95;}.b{fill:#fff;}</style></defs><g transform="translate(-859 -283)"><circle class="a" cx="71.318" cy="71.318" r="71.318" transform="translate(859 283)"></circle><path class="b" d="M683.3,424.105l36.481,21.062a3.293,3.293,0,0,1,0,5.7L683.3,471.933a3.293,3.293,0,0,1-4.939-2.851V426.957A3.293,3.293,0,0,1,683.3,424.105Z" transform="translate(236.033 -93.533)"></path></g></svg>
+              </div>
+              <img id="playvideoimg-{{forloop.index}}" data-vimeo-id="{{block.settings.vimeo_video}}" src="" />
+              <iframe id="playvideo-{{forloop.index}}" src="https://player.vimeo.com/video/{{block.settings.vimeo_video}}?title=0&amp;player_id=playvideo-{{forloop.index}};" width="640" height="360" frameborder=“0” allowfullscreen allow=autoplay></iframe>
+            </div>           
+          </div>
+          {%endif%}
+          <script>
+           $('#playvideoicon-1').click(function() {
+    var iframe = $('#playvideo-1')[0];
+    var player = $f(iframe);
+    player.api('play');
+    $("#playvideoicon-1").hide();
+   $("#playvideoimg-1").hide();
+  });
+  </script>
