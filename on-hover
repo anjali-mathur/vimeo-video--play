@@ -1,0 +1,35 @@
+
+##on hover
+<div class="vmo_video_outer">
+      {%for tag in product.tags%}
+  {%if tag contains 'video_'%}
+    <div class="res-video">
+      <iframe class="card-media-vimeo" id="player-{{ tag |remove_first: 'video_' }}" src="https://player.vimeo.com/video/{{ tag |remove_first: 'video_' }}?muted=1&amp;player_id=player-{{ tag |remove_first: 'video_' }};" frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  {%endif%}
+  {%endfor%}
+</div>
+ <script>
+    $(document).ready(function(){
+      $(document).on('mouseenter', '.vmo_video_outer', function(){
+        var id = $(this).find('iframe').attr('id');
+        var player = new Vimeo.Player(id);
+        var promise = player.play();
+
+        if (promise !== undefined) {
+            promise.catch(error => {
+               // alert('Please Enable video autoplay to access full functionality.')
+            }).then(() => {
+                // Auto-play started
+            });
+        }
+      })
+
+      $(document).on('mouseleave', '.vmo_video_outer', function(){
+        var id = $(this).find('iframe').attr('id');
+        var player = new Vimeo.Player(id);
+        player.pause();
+      })
+    })
+      
+  </script>
