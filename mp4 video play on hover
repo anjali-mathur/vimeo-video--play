@@ -1,0 +1,27 @@
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<div class="video-html">
+    <video class="thevideo" loop  muted="muted">
+      <source src="{{section.settings.Video_link1}}" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+  </div>
+   <script>
+     
+   $(document).on('ready', function() {
+  console.log('ready func');
+  
+  var video = $('.video');
+  console.log('video', video);
+  $(".video").on('mouseover', function() {
+    //console.log('anjali in')
+    $('video', this).get(0).play(); 
+})
+
+$(".video").on('mouseout', function() {
+    //console.log('anjali out')
+    $('video', this).get(0).pause(); 
+})
+
+   });   
+		</script> 
